@@ -2,11 +2,14 @@ import Image from "next/image";
 import Navbar from "./components/navbar/Navbar";
 import dots from "./assets/dots.png";
 import Hero from "./components/hero section/Hero";
+import getCurrentUser from "./actions/getCurrentUser";
 
-export default function Home() {
+export default async function Home() {
+  const currentUser = await getCurrentUser();
+
   return (
     <main className="relative pb-10">
-      <Navbar page="home" />
+      <Navbar page="home" currentUser={currentUser} />
       <Image
         src={dots}
         alt="dots"
