@@ -5,12 +5,12 @@ import Link from "next/link";
 import NavBtn from "./NavBtn";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { SafeUser } from "@/app/types";
 
 interface INavbarProps {
   page: string;
-  currentUser: User | null;
+  currentUser: SafeUser | null;
 }
 
 const Navbar: React.FunctionComponent<INavbarProps> = ({
@@ -49,7 +49,7 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({
             </Link>
             {/* Logout */}
             <div className="m-0 p-0 cursor-pointer" onClick={() => signOut()}>
-              <NavBtn onPage={false} title="Login" />
+              <NavBtn onPage={false} title="Sign Out" />
             </div>
           </>
         ) : (
