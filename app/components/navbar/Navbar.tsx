@@ -47,6 +47,13 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({
                 title="Book an ambulance"
               />
             </Link>
+            {/* AI Checkup */}
+            <Link href={"/aicheckup"}>
+              <NavBtn
+                onPage={page === "aicheckup" ? true : false}
+                title="AI Checkbot"
+              />
+            </Link>
             {/* Logout */}
             <div className="m-0 p-0 cursor-pointer" onClick={() => signOut()}>
               <NavBtn onPage={false} title="Sign Out" />

@@ -8,7 +8,7 @@ export default async function Home() {
   const currentUser = await getCurrentUser();
 
   return (
-    <main className="relative pb-10">
+    <div className="relative pb-10">
       <Navbar page="home" currentUser={currentUser} />
       <Image
         src={dots}
@@ -17,7 +17,7 @@ export default async function Home() {
         height={115}
         className="absolute top-[10rem] left-0"
       />
-      <Hero />
-    </main>
+      <Hero currentUser={currentUser} />
+    </div>
   );
 }
