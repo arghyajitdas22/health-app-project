@@ -75,11 +75,12 @@ const path = [
 // };
 const ambulanceIcon: any = {
   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI-C--YCy68RswHqrYRt8vr2ILTrIT2XCrsA&usqp=CAU",
+  scaledSize: { width: 32, height: 32 },
 };
 
-if (typeof window !== "undefined") {
-  ambulanceIcon.scaledSize = new window.google.maps.Size(32, 32);
-}
+// if (typeof window !== "undefined") {
+//   ambulanceIcon.scaledSize = new window.google.maps.Size(32, 32);
+// }
 
 const MapComponent = () => {
   const [map, setMap] = useState(null);
