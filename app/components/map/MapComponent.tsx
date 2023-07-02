@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   GoogleMap,
   Marker,
   Polyline,
   useLoadScript,
 } from "@react-google-maps/api";
+import Autocomplete from "react-google-autocomplete";
 
 const containerStyle = {
   width: "100%",
@@ -35,13 +36,60 @@ const ambulanceIcon = {
 
 const MapComponent = () => {
   const [map, setMap] = useState(null);
+  // const path = [
+  //   { lat: 18.558908, lng: -68.389916 },
+  //   { lat: 18.558853, lng: -68.389922 },
+  //   { lat: 18.558375, lng: -68.389729 },
+  //   { lat: 18.558032, lng: -68.389182 },
+  //   { lat: 18.55805, lng: -68.388613 },
+  //   { lat: 18.558256, lng: -68.388213 },
+  //   { lat: 18.558744, lng: -68.387929 },
+  // ];
   const [markerPosition, setMarkerPosition] = useState(path[0]);
   const [rotation, setRotation] = useState(0);
 
+  const [source, setSource] = useState("");
+  const [destination, setDestination] = useState("");
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sourceAutocompleteRef = useRef(null);
+  const destinationAutocompleteRef = useRef(null);
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey:
-      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "undefined",
+    googleMapsApiKey: "AIzaSyDSvqFVfMDtPftyvZJMrEYeqF5R5dXc6nE" || "undefined",
   });
+
+  // useEffect(() => {
+  //   // Fetch the directions/path using the Google Maps Directions API
+  //   const fetchDirections = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://maps.googleapis.com/maps/api/directions/json?origin=${source}&destination=${destination}&key=AIzaSyDSvqFVfMDtPftyvZJMrEYeqF5R5dXc6nE`
+  //       );
+  //       const data = await response.json();
+  //       console.log("Rspone", response);
+  //       const { routes } = data;
+
+  //       if (routes.length > 0) {
+  //         const { legs } = routes[0];
+  //         const steps = legs.flatMap((leg) => leg.steps);
+  //         const coordinates = steps.map((step) => ({
+  //           lat: step.start_location.lat,
+  //           lng: step.start_location.lng,
+  //         }));
+  //         // setPath(coordinates);
+  //         setCurrentIndex(0);
+  //       } else {
+  //         console.log("No routes found");
+  //       }
+  //     } catch (error) {
+  //       console.log("Error fetching directions:", error);
+  //     }
+  //   };
+  //   if (source && destination) {
+  //     fetchDirections();
+  //   }
+  // }, [source, destination]);
 
   useEffect(() => {
     let currentIndex = 0;
@@ -74,18 +122,20 @@ const MapComponent = () => {
   }
 
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={16}
-      onLoad={onLoad}
-    >
-      <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
-      <Marker
-        position={markerPosition}
-        icon={{ ...ambulanceIcon, rotation: rotation }}
-      />
-    </GoogleMap>
+    <>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={16}
+        onLoad={onLoad}
+      >
+        <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
+        <Marker
+          position={markerPosition}
+          icon={{ ...ambulanceIcon, rotation: rotation }}
+        />
+      </GoogleMap>
+    </>
   ) : (
     <div>Loading Google Maps...</div>
   );
