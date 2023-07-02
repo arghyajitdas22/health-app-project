@@ -41,6 +41,18 @@ const ChatSec: React.FunctionComponent<IChatSecProps> = (props) => {
         prompt: newString,
       }),
     }).then((response) => response.json());
+    console.log("Rsponse form chat gpt", response.text);
+    const responseFromPrisma = await fetch("/api/doctors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        specialization: response.text,
+      }),
+    }).then((response) => response.json());
+    console.log("ResponseFromPrisma", responseFromPrisma);
+
     setSpecialization(response.text);
     setIsLoading(false);
   };

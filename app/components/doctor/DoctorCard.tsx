@@ -4,8 +4,8 @@ import * as React from "react";
 interface IDoctorCardProps {
   image?: any;
   name: string;
-  degree: string;
-  specialization: string;
+  // degree: string;
+  specialization: any[];
   fees: string;
   rating: string;
 }
@@ -13,17 +13,21 @@ interface IDoctorCardProps {
 const DoctorCard: React.FunctionComponent<IDoctorCardProps> = ({
   image,
   name,
-  degree,
+
   specialization,
   fees,
   rating,
 }) => {
+  let specializationString = "";
+  for (let i = 0; i < specialization.length; i++) {
+    specializationString += specialization[i];
+  }
   return (
     <div className="w-full m-0 flex flex-col relative p-[0.9375rem] border border-[#dadada] rounded-md hover:shadow-lg shadow-sm">
       <div className="flex flex-col flex-1">
         <div className="w-full flex mb-[0.625rem]">
           <div className="rounded-[0.25rem] h-[5.625rem] w-[5.625rem] min-w-[5.625rem] min-h-[5.625rem] shrink-0">
-            <Image
+            <img
               src={image}
               alt="profile-doc"
               width={90}
@@ -39,16 +43,16 @@ const DoctorCard: React.FunctionComponent<IDoctorCardProps> = ({
           </div>
           <div className="mb-[0.5rem]">
             <span className="text-[0.875rem] leading-[1rem] font-normal text-[#0e0e0e]">
-              {degree} in {specialization}
+              {specializationString}
             </span>
           </div>
           <div className="mb-[0.75rem]">
             <p className="text-[0.75rem] whitespace-pre-wrap leading-[1rem] font-normal">
-              INR {fees}/hr
+              {fees}/hr
             </p>
           </div>
           <p className="text-[0.75rem] whitespace-pre-wrap leading-[1rem] font-normal">
-            Ratting: {rating}
+            Rating: {rating}
           </p>
         </div>
       </div>
