@@ -7,22 +7,15 @@ export default async function Ambulance() {
   return (
     <>
       <Navbar page="ambulance" currentUser={currentUser} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          // alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h1 style={{}}>
-          <span style={{ color: "red" }}>Emergency</span> Services For Ambulance
+      <div className="flex flex-col justify-start px-20 ">
+        <h1 className="text-[50px] font-semibold ">
+          <span className="text-red-500">Emergency</span> Services For Ambulance
         </h1>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ flex: 1 }}>
-            <Destination />
+        <div className="flex px-10 pt-5">
+          <div className="flex-1">
+            <Destination placeholder="Enter your location" />
           </div>
-          <div style={{ flex: 1 }}>
+          <div className="flex-1">
             <MapComponent />
           </div>
         </div>
