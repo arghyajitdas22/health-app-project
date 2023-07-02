@@ -1,4 +1,5 @@
 import getCurrentUser from "../actions/getCurrentUser";
+import Destination from "../components/map/Destination";
 import MapComponent from "../components/map/MapComponent";
 import Navbar from "../components/navbar/Navbar";
 export default async function Ambulance() {
@@ -19,10 +20,7 @@ export default async function Ambulance() {
         </h1>
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ flex: 1 }}>
-            <div>
-              <label>Enter your location</label>
-              <input type="text" />
-            </div>
+            <Destination />
           </div>
           <div style={{ flex: 1 }}>
             <MapComponent />
