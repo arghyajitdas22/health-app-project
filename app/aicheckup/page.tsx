@@ -10,6 +10,9 @@ export default async function AiCheckup() {
   return (
     <div className="relative pb-10">
       <Navbar page="aicheckup" currentUser={currentUser} />
+      <p className="text-[#333] text-[20px] pl-40 font-semibold">
+        Choose your Symptoms
+      </p>
       <ChatSec />
       <Image
         src={dots}

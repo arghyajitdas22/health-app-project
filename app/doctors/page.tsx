@@ -199,6 +199,9 @@ export default async function Doctors() {
   return (
     <>
       <Navbar page="doctors" currentUser={currentUser} />
+      <p className="text-[#333] text-[20px] pl-20 font-semibold">
+        Doctors registered with us
+      </p>
       <div className="relative py-10 px-20 grid grid-cols-3 gap-4">
         {doctorArray.map((num) => (
           <DoctorCard

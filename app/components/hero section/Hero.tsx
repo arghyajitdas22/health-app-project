@@ -32,7 +32,7 @@ const Hero: React.FunctionComponent<IHeroProps> = ({ currentUser }) => {
         </h1>
         {/* subheading */}
         <h2 className="text-[#7d7987] text-[1.3125rem] font-normal leading-[2rem]">
-          Health buddy provides a AI chatbot that will listen to your symptoms
+          Health buddy provides a AI ckeckbot that will listen to your symptoms
           and will show you the probable diseases and the specialist doctors who
           can treat those.
         </h2>
