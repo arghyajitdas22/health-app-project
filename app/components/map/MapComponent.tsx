@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import {
   GoogleMap,
@@ -38,7 +39,8 @@ const MapComponent = () => {
   const [rotation, setRotation] = useState(0);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDSvqFVfMDtPftyvZJMrEYeqF5R5dXc6nE",
+    googleMapsApiKey:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "undefined",
   });
 
   useEffect(() => {

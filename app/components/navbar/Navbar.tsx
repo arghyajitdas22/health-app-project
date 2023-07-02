@@ -34,14 +34,14 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({
               <NavBtn onPage={page === "home" ? true : false} title="Home" />
             </Link>
             {/* Find a doctor */}
-            <Link href={"/"}>
+            <Link href={"/doctors"}>
               <NavBtn
                 onPage={page === "doctors" ? true : false}
                 title="Find a doctor"
               />
             </Link>
             {/* Book Ambulance */}
-            <Link href={"/"}>
+            <Link href={"/ambulance"}>
               <NavBtn
                 onPage={page === "ambulance" ? true : false}
                 title="Book an ambulance"
