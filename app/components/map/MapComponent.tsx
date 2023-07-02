@@ -68,11 +68,18 @@ const path = [
   { lat: 18.561206, lng: -68.388521 },
 ];
 
-const ambulanceIcon = {
+// const ambulanceIcon = {
+//   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI-C--YCy68RswHqrYRt8vr2ILTrIT2XCrsA&usqp=CAU",
+//   scaledSize: new window.google.maps.Size(32, 32),
+//   // anchor: { x: 16, y: 16 },
+// };
+const ambulanceIcon: any = {
   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI-C--YCy68RswHqrYRt8vr2ILTrIT2XCrsA&usqp=CAU",
-  scaledSize: { width: 32, height: 32 },
-  anchor: { x: 16, y: 16 },
 };
+
+if (typeof window !== "undefined") {
+  ambulanceIcon.scaledSize = new window.google.maps.Size(32, 32);
+}
 
 const MapComponent = () => {
   const [map, setMap] = useState(null);
@@ -96,7 +103,7 @@ const MapComponent = () => {
   const destinationAutocompleteRef = useRef(null);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDSvqFVfMDtPftyvZJMrEYeqF5R5dXc6nE" || "undefined",
+    googleMapsApiKey: "AIzaSyDSvqFVfMDtPftyvZJMrEYeqF5R5dXc6nE" || "",
   });
 
   // useEffect(() => {
