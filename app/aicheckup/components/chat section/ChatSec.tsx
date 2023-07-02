@@ -91,17 +91,20 @@ const ChatSec: React.FunctionComponent<IChatSecProps> = (props) => {
       <p className="text-[#0e0e0e] font-semibold text-[20px] mt-10 px-20">
         Specialist: {isLoading ? "Loading..." : specialization}
       </p>
-      {finalList.length > 0
-        ? finalList.map((num: any) => (
-            <DoctorCard
-              name={num.name}
-              specialization={num.specialization}
-              fees={num.fees}
-              rating={num.rating}
-              image={num.image}
-            />
-          ))
-        : null}
+      <div className="px-[300px] mt-10">
+        {finalList.length > 0
+          ? finalList.map((num: any) => (
+              <DoctorCard
+                key={num.id}
+                name={num.name}
+                specialization={num.specialization}
+                fees={num.fees}
+                rating={num.rating}
+                image={num.image}
+              />
+            ))
+          : null}
+      </div>
     </>
   );
 };

@@ -205,6 +205,7 @@ export default async function Doctors() {
       <div className="relative py-10 px-20 grid grid-cols-3 gap-4">
         {doctorArray.map((num) => (
           <DoctorCard
+            key={num.id}
             name={num.name}
             specialization={num.specialization}
             fees={num.fees}

@@ -6,6 +6,7 @@ import {
   Polyline,
   useLoadScript,
 } from "@react-google-maps/api";
+
 import Autocomplete from "react-google-autocomplete";
 
 const containerStyle = {
@@ -169,10 +170,7 @@ const MapComponent = () => {
         onLoad={onLoad}
       >
         <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
-        <Marker
-          position={markerPosition}
-          icon={{ ...ambulanceIcon, rotation: rotation }}
-        />
+        <Marker position={markerPosition} icon={ambulanceIcon} />
       </GoogleMap>
     </>
   ) : (

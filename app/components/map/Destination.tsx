@@ -97,7 +97,6 @@ const Destination: React.FunctionComponent<DestinationProps> = ({
             lng: step.start_location.lng,
           }));
           setPath(coordinates);
-          setCurrentIndex(0);
         } else {
           console.log("No routes found");
         }
@@ -145,6 +144,7 @@ const Destination: React.FunctionComponent<DestinationProps> = ({
                     const style = suggestion.active ? {} : {};
                     return (
                       <div
+                        key={suggestion.description}
                         {...getSuggestionItemProps(suggestion, {
                           className,
                           // style,
