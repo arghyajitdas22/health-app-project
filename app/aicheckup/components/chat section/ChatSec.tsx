@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 interface IChatSecProps {}
 
 const ChatSec: React.FunctionComponent<IChatSecProps> = (props) => {
-  const [selectedSymptoms, setSelectedSymtoms] = React.useState([]);
+  const [selectedSymptoms, setSelectedSymtoms] = React.useState<string[]>([]);
   const [specialization, setSpecialization] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 

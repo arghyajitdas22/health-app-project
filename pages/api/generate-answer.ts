@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
 type ResponseData = {
-  text: string;
+  text: string | undefined;
 };
 
 interface GenerateNextApiRequest extends NextApiRequest {
